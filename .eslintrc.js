@@ -51,6 +51,7 @@ module.exports = {
     'eslint-disable-next-line eslint-comments/require-description': 'off',
     'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
+    'unicorn/filename-case': 'off',
   },
   plugins: ['tailwindcss', 'prettier', 'react-hooks', 'react-refresh'],
 };
