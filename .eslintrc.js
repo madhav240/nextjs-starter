@@ -52,6 +52,33 @@ module.exports = {
     'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
     'unicorn/filename-case': 'off',
+    'react/jsx-sort-props': [
+      'warn',
+      {
+        callbacksLast: true,
+        shorthandFirst: true,
+        multiline: 'last',
+        reservedFirst: true,
+      },
+    ],
+    // sort import statements
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc' },
+      },
+    ],
+    // sort named imports within an import statement
+    'sort-imports': ['warn', { ignoreDeclarationSort: true }],
   },
   plugins: ['tailwindcss', 'prettier', 'react-hooks', 'react-refresh'],
 };
