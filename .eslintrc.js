@@ -80,6 +80,7 @@ module.exports = {
     ],
     // sort named imports within an import statement
     'sort-imports': ['warn', { ignoreDeclarationSort: true }],
+    'jsx-a11y/media-has-caption': 'warn',
   },
   plugins: ['tailwindcss', 'prettier', 'react-hooks', 'react-refresh'],
 };
