@@ -57,6 +57,16 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/ban-types': 'warn',
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
+      {
+        allowAny: false,
+        allowBoolean: false,
+        allowNullish: false,
+        allowRegExp: false,
+        allowNever: false,
+      },
+    ],
     'eslint-disable-next-line eslint-comments/require-description': 'off',
     'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
