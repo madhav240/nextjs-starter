@@ -67,6 +67,8 @@ module.exports = {
         allowNever: false,
       },
     ],
+    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/non-nullable-type-assertion-style': 'warn',
     'eslint-disable-next-line eslint-comments/require-description': 'off',
     'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
