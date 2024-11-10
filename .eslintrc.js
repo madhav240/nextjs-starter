@@ -53,5 +53,5 @@ module.exports = {
     'tailwindcss/no-contradicting-classname': 'error',
     'unicorn/filename-case': 'off',
   },
-  plugins: ['tailwindcss', 'prettier', 'react-hooks', 'react-refresh'],
+  plugins: ['tailwindcss', 'prettier', 'react-refresh'],
 };
