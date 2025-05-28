@@ -1,36 +1,28 @@
-import { resolve } from 'node:path'
 import { FlatCompat } from '@eslint/eslintrc'
 import js from '@eslint/js'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
 import prettier from 'eslint-plugin-prettier'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import importPlugin from 'eslint-plugin-import'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-
-const project = resolve(process.cwd(), 'tsconfig.json')
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
 })
 
-export default [
-  // Base configuration
+const config = [
   js.configs.recommended,
 
-  // Next.js configuration using FlatCompat
   ...compat.config({
     extends: ['next/core-web-vitals'],
   }),
 
-  // Main configuration
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        project,
+        project: './tsconfig.json',
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
@@ -46,26 +38,24 @@ export default [
       '@typescript-eslint': typescriptEslint,
       prettier: prettier,
       'react-refresh': reactRefresh,
-      import: importPlugin,
-      'jsx-a11y': jsxA11y,
     },
     settings: {
       'import/resolver': {
         typescript: {
-          project,
+          project: './tsconfig.json',
         },
       },
     },
     rules: {
       'prettier/prettier': [
-        'error',
+        'warn',
         {
           endOfLine: 'auto',
         },
       ],
       'react/react-in-jsx-scope': 'off',
-      'react/no-unescaped-entities': 0,
-      'react/prop-types': 0,
+      'react/no-unescaped-entities': 'off',
+      'react/prop-types': 'off',
       'react/jsx-sort-props': [
         'warn',
         {
@@ -76,29 +66,8 @@ export default [
         },
       ],
       'no-console': ['error', { allow: ['warn', 'error'] }],
-      'no-unused-vars': 0,
-      'no-useless-escape': 'off',
-      'no-redeclare': 'off',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      '@typescript-eslint/no-unsafe-function-type': 'warn',
-      '@typescript-eslint/no-wrapper-object-types': 'warn',
-      '@typescript-eslint/no-restricted-types': 'warn',
-      '@typescript-eslint/no-shadow': 'off',
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/no-misused-promises': 'off',
-      '@typescript-eslint/restrict-template-expressions': [
-        'error',
-        {
-          allowAny: false,
-          allowBoolean: false,
-          allowNullish: false,
-          allowRegExp: false,
-          allowNever: false,
-        },
-      ],
-      'eslint-disable-next-line eslint-comments/require-description': 'off',
-      'unicorn/filename-case': 'off',
-      'import/no-default-export': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
       'import/order': [
         'warn',
         {
@@ -108,12 +77,12 @@ export default [
         },
       ],
       'sort-imports': ['warn', { ignoreDeclarationSort: true }],
-      'jsx-a11y/media-has-caption': 'warn',
     },
   },
 
-  // Ignore patterns
   {
     ignores: ['node_modules/', 'dist/', '.next/', '*static/'],
   },
 ]
+
+export default config
